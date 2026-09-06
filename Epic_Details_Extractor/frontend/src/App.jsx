@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, Search, CheckCircle, FileText, Loader2, AlertCircle, ChevronDown, ChevronUp, Info, ExternalLink, Shield, Mail, Linkedin } from 'lucide-react';
+import { UploadCloud, Search, CheckCircle, FileText, Loader2, AlertCircle, ChevronDown, ChevronUp, Info, ExternalLink, Shield, Mail } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import posthog from 'posthog-js';
 import './index.css';
@@ -343,7 +343,6 @@ function App() {
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 bg-[#f0f6fc] hover:bg-[#e1e9ee] text-[#0a66c2] rounded-full transition-all duration-200 text-sm font-medium shadow-sm hover:shadow"
           >
-            <Linkedin className="w-4 h-4" />
             Connect on LinkedIn
           </a>
         </div>
