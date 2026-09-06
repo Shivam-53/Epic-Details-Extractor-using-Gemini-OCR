@@ -117,7 +117,11 @@ function App() {
       }
 
     } catch (err) {
-      setError(err.message || 'An error occurred while connecting to the server.');
+      if (err.message === 'Failed to fetch' || err.message.includes('NetworkError')) {
+        setError('Failed to upload, please retry in some time.');
+      } else {
+        setError(err.message || 'Failed to upload, please retry in some time.');
+      }
       posthog.capture('Search Error', { error_message: err.message || 'Unknown error' });
     } finally {
       setIsLoading(false);
