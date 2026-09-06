@@ -108,7 +108,7 @@ app.post('/api/search-epic', async (req, res) => {
                         })
                         .catch(err => {
                             file.resume(); // Ensure stream is consumed if upload fails
-                            throw err;
+                            reject(err); // Reject the main promise immediately instead of throwing (prevents UnhandledPromiseRejection crash)
                         });
                     uploadPromises.push(promise);
                 }
@@ -171,7 +171,7 @@ app.post('/api/search-epic', async (req, res) => {
             return res.status(400).json({ error: 'Please upload at least one PDF file.' });
         }
         
-        console.log(`Starting PARALLEL OCR extraction for EPIC: ${trimmedEpic} across ${geminiFiles.length} files`);
+        console.log(`Starting PARALLEL OCR extraction for a user across ${geminiFiles.length} files`);
 
         // Call the Gemini service with the array of files
         const result = await extractEpicDetails(geminiFiles, trimmedEpic);
@@ -202,6 +202,9 @@ app.post('/api/search-epic', async (req, res) => {
         } else if (error.message === 'Not allowed by CORS') {
             statusCode = 403;
             errorMessage = 'This origin is not allowed to access this API.';
+        } else if (error.message && (error.message.includes('408') || error.message.includes('upload file stream'))) {
+            statusCode = 504;
+            errorMessage = 'Connection to servers timed out. Please try again with fewer PDFs.';
         }
 
         if (!res.headersSent) {

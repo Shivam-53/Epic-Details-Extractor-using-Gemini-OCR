@@ -83,7 +83,7 @@ async function uploadStreamToGemini(fileStream, mimeType, displayName) {
  * Internal function to search a single file for the Parallel Accelerator
  */
 async function searchSingleFile(geminiFile, epicNumber, fileIndex, totalFiles, prompt, fallbackModels, signal) {
-    console.log(`[Search ${fileIndex + 1}/${totalFiles}] Asking Gemini to find EPIC ${epicNumber} in ${geminiFile.displayName}...`);
+    console.log(`[Search ${fileIndex + 1}/${totalFiles}] Asking Gemini to find the requested EPIC in ${geminiFile.displayName}...`);
     
     let result;
     let lastError;
@@ -172,11 +172,11 @@ async function searchSingleFile(geminiFile, epicNumber, fileIndex, totalFiles, p
         
         // If the EPIC was found in this file, RESOLVE so Promise.any catches it instantly!
         if (parsedData.found !== false) {
-            console.log(`✅ SUCCESS! Found EPIC ${epicNumber} in file ${geminiFile.displayName}. Resolving Promise.any!`);
+            console.log(`✅ SUCCESS! Found the requested EPIC in file ${geminiFile.displayName}. Resolving Promise.any!`);
             return parsedData;
         }
         
-        console.log(`❌ EPIC not found in ${geminiFile.displayName}. Rejecting so Promise.any moves on.`);
+        console.log(`❌ Requested EPIC not found in ${geminiFile.displayName}. Rejecting so Promise.any moves on.`);
         throw new Error('Not found in this file');
         
     } catch (e) {
@@ -249,7 +249,7 @@ If the EPIC number is not found in the entire document, return this JSON:
         "gemini-3.1-flash" // Removed 2.5 since it threw 404
     ];
 
-    console.log(`🚀 Launching PARALLEL SEARCH across ${filesToSearch.length} PDFs for EPIC: ${epicNumber}...`);
+    console.log(`🚀 Launching PARALLEL SEARCH across ${filesToSearch.length} PDFs for a user...`);
 
     // Create an AbortController to stop background searches once we find the EPIC
     const abortController = new AbortController();
@@ -270,7 +270,7 @@ If the EPIC number is not found in the entire document, return this JSON:
         return foundData;
     } catch (aggregateError) {
         // AggregateError is thrown ONLY if ALL promises reject (meaning the EPIC wasn't found in ANY PDF).
-        console.log(`EPIC ${epicNumber} was not found in any of the provided PDFs after searching all in parallel.`);
+        console.log(`The requested EPIC was not found in any of the provided PDFs after searching all in parallel.`);
         return {
             found: false,
             epicNumber: epicNumber
