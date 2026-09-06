@@ -335,7 +335,7 @@ function App() {
             className="footer-btn email"
           >
             <Mail size={16} />
-            Contact Developer
+            Contact 
           </a>
           <a 
             href="https://www.linkedin.com/in/shivam-tiwari-21368b201/" 
