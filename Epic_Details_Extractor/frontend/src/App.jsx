@@ -81,7 +81,7 @@ function App() {
     }
 
     if (!/^[A-Z]{3}\d{7}$/.test(trimmedEpic)) {
-      setError('Invalid EPIC format. Must be 3 letters followed by 7 digits (e.g., FCS36XXXX).');
+      setError('Invalid EPIC format. Must be 3 letters followed by 7 digits (e.g., FCS36XXXXX).');
       return;
     }
 
@@ -198,7 +198,7 @@ function App() {
               type="text"
               id="epicNumber"
               className="input-field"
-              placeholder="e.g. FCS3644630"
+              placeholder="e.g. FCS36XXXXX"
               value={epicNumber}
               onChange={(e) => setEpicNumber(e.target.value.toUpperCase())}
               maxLength={10}
