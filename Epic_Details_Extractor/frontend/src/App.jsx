@@ -326,6 +326,26 @@ function App() {
           </div>
         )}
       </div>
+
+      {/* Footer Section */}
+      <footer className="text-center mt-8 pb-8 text-gray-500 text-sm">
+        <p>Built with ❤️ for Maharashtra</p>
+        <div className="flex justify-center items-center gap-4 mt-2">
+          <a href="mailto:shivamn2003@gmail.com" className="hover:text-blue-500 transition-colors">
+            shivamn2003@gmail.com
+          </a>
+          <span>•</span>
+          <a 
+            href="https://www.linkedin.com/in/shivam-tiwari-21368b201/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-blue-500 transition-colors"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </footer>
+
       <Analytics />
     </div>
   );
