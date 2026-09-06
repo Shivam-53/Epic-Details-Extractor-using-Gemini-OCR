@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { UploadCloud, Search, CheckCircle, FileText, Loader2, AlertCircle, ChevronDown, ChevronUp, Info, ExternalLink, Shield } from 'lucide-react';
+import { UploadCloud, Search, CheckCircle, FileText, Loader2, AlertCircle, ChevronDown, ChevronUp, Info, ExternalLink, Shield, Mail, Linkedin } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import posthog from 'posthog-js';
 import './index.css';
@@ -328,20 +328,23 @@ function App() {
       </div>
 
       {/* Footer Section */}
-      <footer className="text-center mt-8 pb-8 text-gray-500 text-sm">
-        <p>Built with ❤️ for Maharashtra</p>
-        <div className="flex justify-center items-center gap-4 mt-2">
-          <a href="mailto:shivamn2003@gmail.com" className="hover:text-blue-500 transition-colors">
-            shivamn2003@gmail.com
+      <footer className="mt-12 pb-8 flex flex-col items-center justify-center">
+        <div className="flex flex-wrap justify-center gap-4">
+          <a 
+            href="mailto:shivamn2003@gmail.com" 
+            className="flex items-center gap-2 px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-all duration-200 text-sm font-medium shadow-sm hover:shadow"
+          >
+            <Mail className="w-4 h-4" />
+            Contact Developer
           </a>
-          <span>•</span>
           <a 
             href="https://www.linkedin.com/in/shivam-tiwari-21368b201/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="hover:text-blue-500 transition-colors"
+            className="flex items-center gap-2 px-5 py-2.5 bg-[#f0f6fc] hover:bg-[#e1e9ee] text-[#0a66c2] rounded-full transition-all duration-200 text-sm font-medium shadow-sm hover:shadow"
           >
-            LinkedIn
+            <Linkedin className="w-4 h-4" />
+            Connect on LinkedIn
           </a>
         </div>
       </footer>
