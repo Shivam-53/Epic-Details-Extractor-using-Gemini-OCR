@@ -328,20 +328,20 @@ function App() {
       </div>
 
       {/* Footer Section */}
-      <footer className="mt-12 pb-8 flex flex-col items-center justify-center">
-        <div className="flex flex-wrap justify-center gap-4">
+      <footer className="footer-container">
+        <div className="footer-links">
           <a 
             href="mailto:shivamn2003@gmail.com" 
-            className="flex items-center gap-2 px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full transition-all duration-200 text-sm font-medium shadow-sm hover:shadow"
+            className="footer-btn email"
           >
-            <Mail className="w-4 h-4" />
+            <Mail size={16} />
             Contact Developer
           </a>
           <a 
             href="https://www.linkedin.com/in/shivam-tiwari-21368b201/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-5 py-2.5 bg-[#f0f6fc] hover:bg-[#e1e9ee] text-[#0a66c2] rounded-full transition-all duration-200 text-sm font-medium shadow-sm hover:shadow"
+            className="footer-btn linkedin"
           >
             Connect on LinkedIn
           </a>
