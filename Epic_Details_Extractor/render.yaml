@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: voter-id-api-backend
+    env: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 18.20.2
+      - key: GEMINI_API_KEY
+        sync: false # The user must enter this manually in the Render dashboard!
+      - key: ALLOWED_ORIGINS
+        sync: false # The user must enter their Vercel URL here (e.g. https://my-frontend.vercel.app)
