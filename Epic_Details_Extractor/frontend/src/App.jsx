@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { UploadCloud, Search, CheckCircle, FileText, Loader2, AlertCircle, ChevronDown, ChevronUp, Info, ExternalLink, Shield } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
+import posthog from 'posthog-js';
 import './index.css';
 
 function App() {
@@ -107,8 +108,17 @@ function App() {
       }
 
       setResult(data);
+
+      // --- POSTHOG TRACKING ---
+      if (data.success && data.data && data.data.found !== false) {
+        posthog.capture('Search Success', { epic_found: true });
+      } else {
+        posthog.capture('Search Not Found', { epic_found: false });
+      }
+
     } catch (err) {
       setError(err.message || 'An error occurred while connecting to the server.');
+      posthog.capture('Search Error', { error_message: err.message || 'Unknown error' });
     } finally {
       setIsLoading(false);
     }
