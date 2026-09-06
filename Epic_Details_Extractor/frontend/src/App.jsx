@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { UploadCloud, Search, CheckCircle, FileText, Loader2, AlertCircle, ChevronDown, ChevronUp, Info, ExternalLink, Shield } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
-import { track } from '@vercel/analytics';
 import './index.css';
 
 function App() {
@@ -108,16 +107,8 @@ function App() {
       }
 
       setResult(data);
-      
-      if (data.success && data.data && data.data.found !== false) {
-        track('Search Success');
-      } else {
-        track('Search Not Found');
-      }
-      
     } catch (err) {
       setError(err.message || 'An error occurred while connecting to the server.');
-      track('Search Error', { error: err.message || 'Unknown error' });
     } finally {
       setIsLoading(false);
     }
