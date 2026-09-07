@@ -267,7 +267,7 @@ function App() {
         <div className="privacy-badge">
           <Shield size={16} className="privacy-icon" />
           <p>
-            <strong>Privacy Assured:</strong> Your PDFs are streamed securely to Google for temporary AI processing and are <strong>never stored, saved, or logged</strong> on our servers. We do not collect or retain any Personally Identifiable Information (PII).
+            <strong>Privacy Assured:</strong> Your PDFs are streamed securely to Google for temporary OCR processing and are <strong>never stored, saved, or logged</strong> on our servers. We do not collect or retain any Personally Identifiable Information (PII).
           </p>
         </div>
 
